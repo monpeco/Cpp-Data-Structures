@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>       /* sqrt */
 
+using namespace std;
+
 //Struct definition
 struct V3 {
     double x, y, z;
@@ -23,8 +25,9 @@ struct V3 {
         v.z=z*factor;
         return v;
     }
+    
     void print() {
-        cout << “x: “ << x << “ y: “ << y << “ z: “ << z << endl;
+        cout << "x: " << x << " y: " << y << " z: " << z << endl;
         return;
     }
 
@@ -34,30 +37,31 @@ struct V3 {
 
 
 int main() {
-    V3 va, vb, vc, *ptrP;
-    va.x=1.0;   va.y=1.5;   va.z=2.0;
-    vb.x=4.0;   vb.y=3.5;   vb.z=2.8;
     
-    vc = va.sum(vb);
-    ptrP = &vc;
     
-    std::cout << "Vector´s Funtions" << std::endl;
-    std::cout << "va.x=" << va.x << std::endl;
-    std::cout << "va.y=" << va.y << std::endl;
-    std::cout << "va.z=" << va.z << std::endl;
-    std::cout << "length va = " << va.length() << std::endl;
+    V3 vel, acc, pos;
+    V3 currDispl, currPos;
+    double t = 0.0, deltaT, totalT;
     
-    std::cout << "vb.x=" << vb.x << std::endl;
-    std::cout << "vb.y=" << vb.y << std::endl;
-    std::cout << "vb.z=" << vb.z << std::endl;
-    std::cout << "length vb = " << vb.length() << std::endl;
+    cout << "Give x, y and z components of initial velocity: ";
+    cin >> vel.x >> vel.y >> vel.z;
+    cout << "Give x, y and z components of acceleration: ";
+    cin >> acc.x >> acc.y >> acc.z;
+    cout << "Give x, y and z components of initial position: ";
+    cin >> pos.x >> pos.y >> pos.z;
+    cout << "Give total simulation time: "; cin >> totalT;
+    cout << "Given simulation time granularity: "; cin >> deltaT;
     
-    std::cout << "vc.x=" << vc.x << std::endl;
-    std::cout << "vc.y=" << vc.y << std::endl;
-    std::cout << "vc.z=" << vc.z << std::endl;
-    std::cout << "length vc = " << vc.length() << std::endl;
-    std::cout << "length vc = " << vc.scale(8.0).length() << std::endl;
-    std::cout << "length ptrP = " << (ptrP->scale(8.0)).length() << std::endl;
-
+    if ((totalT < 0) || (deltaT <= 0)) {
+        cout << "Invalid input!" << endl; return -1;
+    }
+    
+    while (t <= totalT) {
+        // Calculate current displacement using vel*t + (0.5)*acc*t2
+        currDispl = (vel.scale(t)).sum(acc.scale(0.5*t*t));
+        currPos = currDispl.sum(pos);
+        cout << "Time " << t << " "; currPos.print(); t = t + deltaT;
+    }   
+        
     exit(0);
 }

@@ -23,6 +23,10 @@ struct V3 {
         v.z=z*factor;
         return v;
     }
+    void print() {
+        cout << “x: “ << x << “ y: “ << y << “ z: “ << z << endl;
+        return;
+    }
 
 };
 

@@ -16,30 +16,31 @@ void solutionRPM(long long int rpm, int &years, long long int &finalRPM) {
     long long int MAX_RPM = rpm * 8;
     const int nFactor = 323;
     char sRpm [50];
-    bool isDebug = false;
+    bool isDebug = true;
+    
+    int nActualLast2Digits = 0;
     
     while((nYeasCount<10) && (llnRpm<=MAX_RPM)){
         while(llnRpm>0){
-            nDigit = llnRpm % 10;               if (isDebug) cout << "nDigit: " << nDigit << endl;
-            llnRpm = llnRpm / 10;               if (isDebug) cout << "llnRpm: " << llnRpm << endl << endl;
+            nDigit = llnRpm % 10;               //if (isDebug) cout << "nDigit: " << nDigit << endl;
+            llnRpm = llnRpm / 10;               //if (isDebug) cout << "llnRpm: " << llnRpm << endl << endl;
             
             if (nCount == 0){
-                sprintf(        sRpm, "%d%lld", nDigit, llnRpm);    if (isDebug) cout << "----------sRpm: " << sRpm << endl;
-                nLast2Digits = atoi(sRpm) % 100;                    if (isDebug) cout << "----------nLast2Digits: " << nLast2Digits << endl;
+                nActualLast2Digits = llnRpm % 100;                  //if (isDebug) cout << "----------nActualLast2Digits: " << nActualLast2Digits << endl;
+
             }        
-            nDigit = nDigit * nDigit;           if (isDebug) cout << "nDigit^2: " << nDigit << endl;
+            nDigit = nDigit * nDigit;           //if (isDebug) cout << "nDigit^2: " << nDigit << endl;
             nAcc += nDigit;
     
             nCount++;
         }
         nYeasCount++;
-                                                if (isDebug) cout << "nAcc: " << nAcc << endl;
-        nAcc = nAcc*nFactor;                    if (isDebug) cout << "nAcc*nFactor: " << nAcc << endl;  
-        llnRpm = nAcc + nLast2Digits;           if (isDebug) cout << "(new) llnRpm: " << llnRpm << endl << endl; 
-                                                if (isDebug) cout << "(new) llnRpm: " << llnRpm << " nYeasCount: " << nYeasCount << endl << endl;
-        nAcc = nLast2Digits = nCount = 0;
-        strcpy(sRpm,"");
-        
+                                                //if (isDebug) cout << "nAcc: " << nAcc << endl;
+        nAcc = nAcc*nFactor;                    //if (isDebug) cout << "nAcc*nFactor: " << nAcc << endl;  
+        llnRpm = nAcc + nActualLast2Digits;           //if (isDebug) cout << "(new) llnRpm: " << llnRpm << endl << endl; 
+                                                //if (isDebug) cout << "(new) llnRpm: " << llnRpm << " nYeasCount: " << nYeasCount << endl << endl;
+        nAcc = nActualLast2Digits = nCount = 0;
+
     }
     
     years  =nYeasCount;

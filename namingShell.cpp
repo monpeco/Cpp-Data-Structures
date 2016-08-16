@@ -36,6 +36,6 @@ echo \"FIN Proceso $EJECUTABLE.exe :\"`date \"+%d-%m-%Y at %H:%M\":%S` >> $ARCHI
 echo \"===========================================================\" >> $ARCHIVO_LOG\n\
 echo \"\" >> $ARCHIVO_LOG\n\n" << endl ;
 
-cout << " vi proceso" << orden << "_" << nombre << ".sh\n" << endl ;
+cout << " Shell a crear:" << endl << " vi proceso" << orden << "_" << nombre << ".sh\n" << endl ;
    return 0;
 }

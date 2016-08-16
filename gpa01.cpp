@@ -1,58 +1,55 @@
-#include <iostream>
+//#include <iostream>
 using namespace std;
 bool debug = true;
 
 
-// void getTotalGQ(int numOfStudents, int gq[], int sum_gq[]) {
-//     // Write your solution code below this line
+void getTotalGQ(int numOfStudents, int gq[], int sum_gq[]) {
+    // Write your solution code below this line
 
-//     for(int i=0; i<numOfStudents; i++)      sum_gq[ gq[i] ]++;
-//     for(int i=0; i<11; i++)    i=i; 
-// }
+    for(int i=0; i<numOfStudents; i++)      sum_gq[ gq[i] ]++;
+    //for(int i=0; i<11; i++)    cout << "\tsum_gq[]:" << sum_gq[i] << endl ; 
+}
 
-// void getTotalGPA(int numOfStudents, float gpa[], int sum_gpa[]) {
-//     // Write your solution code below this line
+void getTotalGPA(int numOfStudents, float gpa[], int sum_gpa[]) {
+    // Write your solution code below this line
 
-//     for(int i=0; i<numOfStudents; i++){
-//         int gpa_nor = gpa[i] * 3.333333333333;
-//         sum_gpa[ gpa_nor ]++;
-//     }
-//     for(int i=0; i<5; i++)      cout << " sum_gpa[" << i << "] : " << sum_gpa[i] << endl ;
-// }
+    for(int i=0; i<numOfStudents; i++){
+        int gpa_nor = gpa[i] * 3.333333333333;
+        sum_gpa[ gpa_nor ]++;
+    }
+    //for(int i=0; i<4; i++)      cout << " sum_gpa[" << i << "] : " << sum_gpa[i] << endl ;
+}
 
 void getTotalCount(int numOfStudents, int gq[], float gpa[], int count[][5]) {
     // Write your solution code below this line
      
     int gpa_n[]   = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};    
 
-    cout << "-----------------gpa normalized - gpa_n--------------------" << endl;
+    //cout << "-----------------gpa normalized - gpa_n--------------------" << endl;
     for(int i=0; i<numOfStudents;i++){
         gpa_n[i] = gpa[i] * 3.333333333333;
     }
-    for(int i=0; i<numOfStudents;i++){          
-        cout << "\tgpa_n[]:" << gpa_n[i] ; 
-    }
+    //for(int i=0; i<numOfStudents;i++){          
+    //    cout << "\tgpa_n[]:" << gpa_n[i] ; 
+    //}
     
-    cout << endl << "----------------------The Input arrays------------------" << endl;
-    int gpa_nor = 0, gq_coor=0;
+    //cout << endl << "----------------------The Input arrays------------------" << endl;
+    //int gpa_nor = 0, gq_coor=0;
     for(int i=0;i<numOfStudents;i++){
-        //for(int j=0;j<4;j++){
-            cout << "\tgq[]:"<< gq[i] << "\tgpa_n[]:" << gpa_n[i] ; 
+            //cout << "\tgq[]:"<< gq[i] << "\tgpa_n[]:" << gpa_n[i] ; 
             (count[ gq[i] ][ gpa_n[i] ])++;
-
-        //}   
-        cout << endl;
+        //cout << endl;
     }
     
-    cout << endl << "----------------------The matrix of distribution------------------" << endl;
+    //cout << endl << "----------------------The matrix of distribution------------------" << endl;
 
-    for(int i=0;i<11;i++){
-        for(int j=0;j<4;j++){
-            cout << "\tc:" << count[ i ][ j ];
-        }   
-        cout << endl;
-    }
-    cout << endl << "----------------------The sum of files------------------" << endl;
+    // for(int i=0;i<11;i++){
+    //     for(int j=0;j<4;j++){
+    //         cout << "\tc:" << count[ i ][ j ];
+    //     }   
+    //     cout << endl;
+    // }
+    //cout << endl << "----------------------The sum of files------------------" << endl;
 
     for(int i=0;i<11;i++){
         for(int j=0;j<4;j++){
@@ -60,14 +57,14 @@ void getTotalCount(int numOfStudents, int gq[], float gpa[], int count[][5]) {
         }   
     }
     
-    for(int i=0;i<11;i++){
-        for(int j=0;j<5;j++){
-            cout << "\tc:" << count[ i ][ j ];
-        }   
-        cout << endl;
-    }
+    // for(int i=0;i<11;i++){
+    //     for(int j=0;j<5;j++){
+    //         cout << "\tc:" << count[ i ][ j ];
+    //     }   
+    //     cout << endl;
+    // }
     
-    cout << endl << "----------------------The sum of columns------------------" << endl;
+    //cout << endl << "----------------------The sum of columns------------------" << endl;
 
     for(int j=0;j<5;j++){
         for(int i=0;i<11;i++){
@@ -75,40 +72,12 @@ void getTotalCount(int numOfStudents, int gq[], float gpa[], int count[][5]) {
         }   
     }
     
-    for(int i=0;i<12;i++){
-        for(int j=0;j<5;j++){
-            cout << "\tc:" << count[ i ][ j ];
-        }   
-        cout << endl;
-    }
-//     for(int i=0; i<numOfStudents;i++) cout << "\tgpa[]:" << gpa[i] ;
-//     for(int i=0;i<numOfStudents;i++){
-//         for(int j=0;j<4;j++){
-//             count[i][j] = 0;
-//         }   
-//     }
-
-//     for(int i=0;i<numOfStudents;i++){
-//         for(int j=0;j<4;j++){
-//             cout << "\tco:" << count[i][j] ;
-//         }   
-//         cout << endl;
-//     }
-// cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-//     for(int i=0; i<numOfStudents;i++) cout << "\tgpa[]:" << gpa[i] ;
-
-//     int gpa_nor = 0, gq_coor=0;
-//     for(int i=0;i<numOfStudents;i++){
-//         for(int j=0;j<4;j++){
-//             gpa_nor = gpa[j] * 3.333333333333;
-//             cout << "\tgq[i]" << gq[i] ;
-//             cout << "\tgpa[gpa_nor]:" << gpa[gpa_nor] ;
-//             cout << "\tgpa_nor" << gpa_nor ;
-
-//         }   
-//         cout << endl;
-//     }
-//     for(int i=0; i<numOfStudents;i++) cout << "\tgpa[]:" << gpa[i] ;
+    // for(int i=0;i<12;i++){
+    //     for(int j=0;j<5;j++){
+    //         cout << "\tc:" << count[ i ][ j ];
+    //     }   
+    //     cout << endl;
+    // }
 
 }
 
@@ -129,12 +98,12 @@ int main () {
     
     int count[54][5] = { {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0},{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}  };
     
-    // getTotalGQ(numOfStudents, gq, sum_gq);
+    getTotalGQ(numOfStudents, gq, sum_gq);
     // cout <<  endl ;
-    // getTotalGPA(numOfStudents, gpa, sum_gpa);
+    getTotalGPA(numOfStudents, gpa, sum_gpa);
     // cout <<  endl ;
     getTotalCount(numOfStudents, gq, gpa, count);
-    cout <<  endl ;
+    //cout <<  endl ;
 
     return 0;
 }

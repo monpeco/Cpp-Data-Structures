@@ -46,7 +46,25 @@ int selectionSort2(float array[][2], int numElements) {
     //Write your code below this line to find out and return the breakpoint. Sort the upper part of array (if required)
     // Hint: Use the comparator function
 
+    int breakpoint = 0;
+    for(int index=numElements-1; index > 0; index--){
+        if (comparator(array, index-1, index) == 1){
+            breakpoint = index;
+            break;
+        }
+    }
     
+    for(int index=0; index < breakpoint-1; index++){
+        if (comparator(array, index, index+1) == 1){
+            float temp[1][2]={array[index][0], array[index][1]};
+            array[index][0] = array[index+1][0];
+            array[index][1] = array[index+1][1];
+            array[index+1][0] = temp[1][0];
+            array[index+1][1] = temp[1][1];
+        }
+    }    
+    
+    return breakpoint;
 }
 
 
@@ -64,27 +82,32 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
 }
 
 int main(){
-    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100}, {60, 60}, {50, 10} };
-    int index1=0, index2=0, numElements=8;
+//    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100}, {60, 60}, {50, 10} };
+    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100} };
+    int index1=0, index2=0, numElements=6;
     int result = 0;
+    //for(int i=0;i<numElements;i++,cout << endl)
+    //    for(int j=0;j<2;j++)
+    //        cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ;
+            
+            
+    // index1 = 0; index2 = 1;
+    // result = comparator(marksarray, 5, 4);
+    // cout << "result: " << result << endl ;
+    
+    // result = comparator(marksarray, 4, 3);
+    // cout << "result: " << result << endl ;
+    
+    // result = comparator(marksarray, 3, 2);
+    // cout << "result: " << result << endl ; 
+    // cout << "----------------------------------------- " << endl ; 
+
+    result = selectionSort2(marksarray, 6);
+    cout << "result: " << result << endl ; 
+
     for(int i=0;i<numElements;i++,cout << endl)
         for(int j=0;j<2;j++)
             cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ;
-            
-            
-    index1 = 0; index2 = 1;
-    result = comparator(marksarray, 0, 1);
-    cout << "result: " << result << endl ;
-    
-    result = comparator(marksarray, 2, 4);
-    cout << "result: " << result << endl ;
-    
-    result = comparator(marksarray, 3, 1);
-    cout << "result: " << result << endl ;    
-
-    result = comparator(marksarray, 4, 0);
-    cout << "result: " << result << endl ;
-    
     cout << "End" << endl ;
     return 0;
 }

@@ -13,12 +13,14 @@ int comparator(float marksarray[][2],int index1, int index2) {
     float square_midsem_marks1 = pow(marksarray[index1][0],2);
     float square_endsem_marks1 = pow(marksarray[index1][1],2);
     float rms1 =  sqrt(0.5 * (square_midsem_marks1 + square_endsem_marks1));
-    cout << "RMS of index1:" << rms1 ;
+    cout << "RMS(" << marksarray[index1][0] << "," << marksarray[index1][1] << ") index1:" << rms1 ;
     
     float square_midsem_marks2 = pow(marksarray[index2][0],2);
     float square_endsem_marks2 = pow(marksarray[index2][1],2);
     float rms2 = sqrt(0.5 * (square_midsem_marks2 + square_endsem_marks2));
-    cout << "\tRMS of index2:" << rms2 << endl;
+    cout << "\tRMS(" << marksarray[index2][0] << "," << marksarray[index2][1] << ") index2:" << rms1 << endl;
+
+    //cout << "\tRMS of index2:" << rms2 << endl;
 
     if (rms1 > rms2){
         return -1;
@@ -50,20 +52,31 @@ int selectionSort2(float array[][2], int numElements) {
     for(int index=numElements-1; index > 0; index--){
         if (comparator(array, index-1, index) == 1){
             breakpoint = index;
+
             break;
         }
     }
-    
-    for(int index=0; index < breakpoint-1; index++){
-        if (comparator(array, index, index+1) == 1){
-            float temp[1][2]={array[index][0], array[index][1]};
-            array[index][0] = array[index+1][0];
-            array[index][1] = array[index+1][1];
-            array[index+1][0] = temp[1][0];
-            array[index+1][1] = temp[1][1];
-        }
-    }    
-    
+
+    cout << "breakpoint" << endl;    
+    for(int indey=0; indey < breakpoint-1; indey++){
+        for(int index=0; index < breakpoint-1; index++){
+            if (comparator(array, index, index+1) == -1){
+                cout << "entro" << endl;    
+                float temp0=array[index][0];    //cout << "-----------temp0: " << temp0 << endl;    
+                float temp1=array[index][1];
+                array[index][0] = array[index+1][0];    //cout << "-----------array[index][0]: " << array[index][0] << endl;   
+                array[index][1] = array[index+1][1];
+                array[index+1][0] = temp0;    //cout << "-----------array[index+1][0]: " << array[index+1][0] << endl; 
+                array[index+1][1] = temp1;
+            }
+        } 
+    }
+cout << "-----------: " << endl;    
+    for(int i=0;i<numElements;i++,cout << endl)
+        for(int j=0;j<2;j++)
+            cout << "\tarray[" << i << "][" << j << "]:" << array[i][j] ;
+cout << "-----------: " << endl;    
+
     return breakpoint;
 }
 
@@ -86,21 +99,11 @@ int main(){
     float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100} };
     int index1=0, index2=0, numElements=6;
     int result = 0;
-    //for(int i=0;i<numElements;i++,cout << endl)
-    //    for(int j=0;j<2;j++)
-    //        cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ;
-            
-            
-    // index1 = 0; index2 = 1;
-    // result = comparator(marksarray, 5, 4);
-    // cout << "result: " << result << endl ;
-    
-    // result = comparator(marksarray, 4, 3);
-    // cout << "result: " << result << endl ;
-    
-    // result = comparator(marksarray, 3, 2);
-    // cout << "result: " << result << endl ; 
-    // cout << "----------------------------------------- " << endl ; 
+
+    for(int i=0;i<numElements;i++,cout << endl)
+        for(int j=0;j<2;j++)
+            cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ;
+    cout << "----------------------------------------- " << endl ; 
 
     result = selectionSort2(marksarray, 6);
     cout << "result: " << result << endl ; 

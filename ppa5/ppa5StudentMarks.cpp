@@ -13,12 +13,12 @@ int comparator(float marksarray[][2],int index1, int index2) {
     float square_midsem_marks1 = pow(marksarray[index1][0],2);
     float square_endsem_marks1 = pow(marksarray[index1][1],2);
     float rms1 =  sqrt(0.5 * (square_midsem_marks1 + square_endsem_marks1));
-    cout << "RMS(" << marksarray[index1][0] << "," << marksarray[index1][1] << ") index1:" << rms1 ;
+    //cout << "RMS(" << marksarray[index1][0] << "," << marksarray[index1][1] << ") index1:" << rms1 ;
     
     float square_midsem_marks2 = pow(marksarray[index2][0],2);
     float square_endsem_marks2 = pow(marksarray[index2][1],2);
     float rms2 = sqrt(0.5 * (square_midsem_marks2 + square_endsem_marks2));
-    cout << "\tRMS(" << marksarray[index2][0] << "," << marksarray[index2][1] << ") index2:" << rms1 << endl;
+    //cout << "\tRMS(" << marksarray[index2][0] << "," << marksarray[index2][1] << ") index2:" << rms1 << endl;
 
     //cout << "\tRMS of index2:" << rms2 << endl;
 
@@ -52,30 +52,22 @@ int selectionSort2(float array[][2], int numElements) {
     for(int index=numElements-1; index > 0; index--){
         if (comparator(array, index-1, index) == 1){
             breakpoint = index;
-
             break;
         }
     }
 
-    cout << "breakpoint" << endl;    
     for(int indey=0; indey < breakpoint-1; indey++){
         for(int index=0; index < breakpoint-1; index++){
             if (comparator(array, index, index+1) == -1){
-                cout << "entro" << endl;    
-                float temp0=array[index][0];    //cout << "-----------temp0: " << temp0 << endl;    
+                float temp0=array[index][0];
                 float temp1=array[index][1];
-                array[index][0] = array[index+1][0];    //cout << "-----------array[index][0]: " << array[index][0] << endl;   
+                array[index][0] = array[index+1][0];
                 array[index][1] = array[index+1][1];
-                array[index+1][0] = temp0;    //cout << "-----------array[index+1][0]: " << array[index+1][0] << endl; 
+                array[index+1][0] = temp0;
                 array[index+1][1] = temp1;
             }
         } 
     }
-cout << "-----------: " << endl;    
-    for(int i=0;i<numElements;i++,cout << endl)
-        for(int j=0;j<2;j++)
-            cout << "\tarray[" << i << "][" << j << "]:" << array[i][j] ;
-cout << "-----------: " << endl;    
 
     return breakpoint;
 }

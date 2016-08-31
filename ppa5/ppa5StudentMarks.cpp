@@ -9,14 +9,15 @@ int index2            : Denotes the the row number(index) of the student.  */
 int comparator(float marksarray[][2],int index1, int index2) {
     //Write your code below this line to calculate RMS, compare them, and return either -1, 0, or 1  
 
+
     float square_midsem_marks1 = pow(marksarray[index1][0],2);
     float square_endsem_marks1 = pow(marksarray[index1][1],2);
-    float rms1 = sqrt(square_midsem_marks1 + square_endsem_marks1);
+    float rms1 =  sqrt(0.5 * (square_midsem_marks1 + square_endsem_marks1));
     cout << "RMS of index1:" << rms1 ;
-
+    
     float square_midsem_marks2 = pow(marksarray[index2][0],2);
     float square_endsem_marks2 = pow(marksarray[index2][1],2);
-    float rms2 = sqrt(square_midsem_marks2 + square_endsem_marks2);
+    float rms2 = sqrt(0.5 * (square_midsem_marks2 + square_endsem_marks2));
     cout << "\tRMS of index2:" << rms2 << endl;
 
     if (rms1 > rms2){
@@ -72,9 +73,18 @@ int main(){
             
             
     index1 = 0; index2 = 1;
-    result = comparator(marksarray, index1, index2);
+    result = comparator(marksarray, 0, 1);
     cout << "result: " << result << endl ;
+    
+    result = comparator(marksarray, 2, 4);
+    cout << "result: " << result << endl ;
+    
+    result = comparator(marksarray, 3, 1);
+    cout << "result: " << result << endl ;    
 
+    result = comparator(marksarray, 4, 0);
+    cout << "result: " << result << endl ;
+    
     cout << "End" << endl ;
     return 0;
 }

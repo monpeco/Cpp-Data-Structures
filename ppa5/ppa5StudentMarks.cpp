@@ -97,18 +97,23 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
     }
     
     //And later, copy only those rows un-marked
-    int indexM = 0;
+    int indexM = 0, numElementsMerge = numElements;
     for(int index=0; index < numElements; index++){
         if(sortedarray[index][0] != -99){
-            cout << "index: " << index << endl;
-            cout << "indexM: " << indexM << endl;
+            //cout << "index: " << index << endl;
+            //cout << "indexM: " << indexM << endl;
             mergedarray[indexM][0] = sortedarray[index][0];
             mergedarray[indexM][1] = sortedarray[index][1];
             indexM++;
-            cout << "\t----------mergedarray[" << indexM << "][" << 0 << "]:" << mergedarray[indexM][0] << endl; 
+            // cout << "\t----------mergedarray[" << indexM << "][" << 0 << "]:" << mergedarray[indexM][0] << endl; 
+            // if( (sortedarray[index][0] == 30) && (sortedarray[index][1] == 40) ){
+            //   cout << "\t----------\tindex::" << index << endl; 
+            // }
+        }else{
+            numElementsMerge--;
         }
     }
-        
+    return numElementsMerge;
     
 }
 
@@ -116,23 +121,19 @@ int main(){
 //    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100}, {60, 60}, {50, 10} };
 //    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100} };
     float marksarray[][2]={ {30, 40}, {60, 20}, {60, 20}, {10, 90}, {90, 30}, {0, 100}, {60, 20} };
-    float mergedarray[][2]={ {0, 0}, {0, 0}, {0, 0}, {0, 0}, {-10, -10}, {-10, -10} };
-    int index1=0, index2=0, numElements=7;
+    float mergedarray[][2]={ {0, 0}, {0, 0}, {0, 0}, {0, 0}, {-10, -10}, {-10, -10} , {-10, -10} };
+    int index1=0, index2=0, numElements=7, numElementsMerge=0;
     int break_point = 0;
 
     break_point = selectionSort2(marksarray, numElements);
     cout << "break_point: " << break_point << endl ; 
-    // cout << "Sorted Arrar: " << endl ; 
+
+    numElementsMerge = merge(marksarray, mergedarray, break_point, numElements);
+    cout << "numElementsMerge: " << numElementsMerge << endl ; 
 
     // for(int i=0;i<numElements;i++,cout << endl)
     //     for(int j=0;j<2;j++)
-    //         cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ;
-            
-    merge(marksarray, mergedarray, break_point, numElements);
-    
-    for(int i=0;i<numElements;i++,cout << endl)
-        for(int j=0;j<2;j++)
-            cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ; 
+    //         cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ; 
     
     cout << "---------------------" << endl ; 
             

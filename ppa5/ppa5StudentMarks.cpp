@@ -105,16 +105,21 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
             mergedarray[indexM][0] = sortedarray[index][0];
             mergedarray[indexM][1] = sortedarray[index][1];
             indexM++;
-            // cout << "\t----------mergedarray[" << indexM << "][" << 0 << "]:" << mergedarray[indexM][0] << endl; 
-            // if( (sortedarray[index][0] == 30) && (sortedarray[index][1] == 40) ){
-            //   cout << "\t----------\tindex::" << index << endl; 
-            // }
         }else{
             numElementsMerge--;
         }
     }
     return numElementsMerge;
     
+}
+
+void showArray(float marksarray[][2], int numElements, const char nameArray[]){
+    for(int i=0;i<numElements;i++,cout << endl)
+        for(int j=0;j<2;j++)
+            cout << "\t" << nameArray << i << "][" << j << "]:" << marksarray[i][j] ;
+            
+    cout << "---------------------" << endl ; 
+            
 }
 
 int main(){
@@ -125,21 +130,20 @@ int main(){
     int index1=0, index2=0, numElements=7, numElementsMerge=0;
     int break_point = 0;
 
-    break_point = selectionSort2(marksarray, numElements);
-    cout << "break_point: " << break_point << endl ; 
-
-    numElementsMerge = merge(marksarray, mergedarray, break_point, numElements);
-    cout << "numElementsMerge: " << numElementsMerge << endl ; 
-
-    // for(int i=0;i<numElements;i++,cout << endl)
-    //     for(int j=0;j<2;j++)
-    //         cout << "\tmarksarray[" << i << "][" << j << "]:" << marksarray[i][j] ; 
+    cout << "Show initial marksarray" << endl ; 
+    showArray(marksarray, numElements,  "marksarray");
     
-    cout << "---------------------" << endl ; 
-            
-    for(int i=0;i<numElements;i++,cout << endl)
-        for(int j=0;j<2;j++)
-            cout << "\tmergedarray[" << i << "][" << j << "]:" << mergedarray[i][j] ;
+    cout << "call selectionSort2 " << endl ; 
+    break_point = selectionSort2(marksarray, numElements);
+    cout << "\tbreak_point: " << break_point << endl ; 
+    showArray(marksarray, numElements, "marksarray");
+
+    cout << "call merge " << endl ; 
+    numElementsMerge = merge(marksarray, mergedarray, break_point, numElements);
+    cout << "\tnumElementsMerge: " << numElementsMerge << endl ; 
+    showArray(mergedarray, numElementsMerge, "mergedarray");
+
+
             
     cout << "End" << endl ;
     return 0;

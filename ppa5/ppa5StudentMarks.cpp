@@ -9,7 +9,6 @@ int index2            : Denotes the the row number(index) of the student.  */
 int comparator(float marksarray[][2],int index1, int index2) {
     //Write your code below this line to calculate RMS, compare them, and return either -1, 0, or 1  
 
-
     float square_midsem_marks1 = pow(marksarray[index1][0],2);
     float square_endsem_marks1 = pow(marksarray[index1][1],2);
     float rms1 =  sqrt(0.5 * (square_midsem_marks1 + square_endsem_marks1));
@@ -48,6 +47,7 @@ int selectionSort2(float array[][2], int numElements) {
     //Write your code below this line to find out and return the breakpoint. Sort the upper part of array (if required)
     // Hint: Use the comparator function
 
+    //First indetify the breakpoint
     int break_point = 0;
     for(int index=numElements-1; index > 0; index--){
         if (comparator(array, index-1, index) == 1){
@@ -56,6 +56,7 @@ int selectionSort2(float array[][2], int numElements) {
         }
     }
 
+    //And later, sort the unsorted part of the array
     for(int indey=0; indey < break_point-1; indey++){
         for(int index=0; index < break_point-1; index++){
             if (comparator(array, index, index+1) == -1){
@@ -109,8 +110,8 @@ int merge(float sortedarray[][2], float mergedarray[][2], int break_point, int n
             numElementsMerge--;
         }
     }
-    return numElementsMerge;
     
+    return numElementsMerge;
 }
 
 void showArray(float marksarray[][2], int numElements, const char nameArray[]){
@@ -125,9 +126,9 @@ void showArray(float marksarray[][2], int numElements, const char nameArray[]){
 int main(){
 //    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100}, {60, 60}, {50, 10} };
 //    float marksarray[][2]={ {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100} };
-    float marksarray[][2]={ {30, 40}, {60, 20}, {60, 20}, {10, 90}, {90, 30}, {0, 100}, {60, 20} };
-    float mergedarray[][2]={ {0, 0}, {0, 0}, {0, 0}, {0, 0}, {-10, -10}, {-10, -10} , {-10, -10} };
-    int index1=0, index2=0, numElements=7, numElementsMerge=0;
+    float marksarray[][2]={ {40, 10}, {90, 50}, {40, 10}, {40, 30}, {90, 40}, {40, 10} };
+    float mergedarray[][2]={ {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0} } ;
+    int index1=0, index2=0, numElements=6, numElementsMerge=0;
     int break_point = 0;
 
     cout << "Show initial marksarray" << endl ; 

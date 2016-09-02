@@ -1,12 +1,13 @@
 #include <iostream>
 using namespace std;
 
+//Compare two intergers
 bool pairEarlier(int a, int b) {
   int a1=a/10;
   int b1=a%10;
   int a2=b/10;
   int b2=b%10;
-  if(a1*b1 < a2*b2) return true;
+  if(a1*b1 < a2*b2) return true;    //rare form, but is just a comparation
   else  return false;
 }
   

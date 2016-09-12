@@ -81,8 +81,8 @@ void merge(int audience[][2], int mergedarray[][2],int N, int i_index , int j_in
 
 int indexA = 0, indexB = j_index, indexM = 0;
 
-for(indexA=0, indexB=j_index; ((indexA < i_index) || (indexB < N));){
-	if((indexA < i_index) && (indexB < N)){
+for(indexA=0, indexB=j_index; ((indexA < i_index+1) || (indexB < N));){
+	if((indexA < i_index+1) && (indexB < N)){
 		if(comparator(audience, indexA, indexB) == 1){
 			mergedarray[indexM][0] = audience[indexA][0];
             mergedarray[indexM][1] = audience[indexA][1];
@@ -112,28 +112,40 @@ for(indexA=0, indexB=j_index; ((indexA < i_index) || (indexB < N));){
 
 int main (int argc, char* argv[]) {
     
-    int audience[][2] = {{6,13}, {5,3}, {43,2}, {3,8}, {5,3}, {7,23} , {9,92} , {5,3} , {11,26} , {4,23} };
+    int audience[][2] = {{6,13}, {5,3}, {43,2}, {3,8}, {7,23}, {5,3} , {9,92} , {5,3} , {11,26} , {4,23} };
     int mergedarray[][2] = {{0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0} , {0,0} , {0,0} , {0,0} , {0,0} };
     int index1 = 8, index2 = 1, comparator_result = -9, N = 10;
     int i_index = 0, j_index = N;
     
     cout << "------------------------------------------------ " << endl;
-    //for (int index=0; index<N; index++){
-    //    cout << " audience[" << index << "]: " << audience[index][0] << "\t," << audience[index][1] << endl ;
-    //}
-    
-    comparator_result = comparator(audience, index1, index2);
-    //cout << "comparator_result: " << comparator_result << endl;
+    cout << "--Base and exponent for 10 rows--- " << endl;
+    for (int index=0; index<N; index++){
+        cout << " audience[" << index << "]:\t" << audience[index][0] << "\t," << audience[index][1] << endl ;
+    }
+        
+    comparator_result = comparator(audience, 3, 8);
+    cout << "comparator_result 3, 8: " << comparator_result << endl;
+        comparator_result = comparator(audience, 4, 2);
+    cout << "comparator_result 4, 2: " << comparator_result << endl;
+        comparator_result = comparator(audience, 8, 1);
+    cout << "comparator_result 8, 1: " << comparator_result << endl;
+        comparator_result = comparator(audience, 1, 4);
+    cout << "comparator_result 1, 4: " << comparator_result << endl;    
+        comparator_result = comparator(audience, 3, 7);
+    cout << "comparator_result 3, 7: " << comparator_result << endl;
 
 
     sorting(audience, N, i_index, j_index);
-    cout << "i_index: " << i_index << endl;
-    cout << "j_index: " << j_index << endl;
 
     cout << "------------------------------------------------ " << endl;
+    cout << "--Function 2: Array sorted for the above data--- " << endl;
     for (int index=0; index<N; index++){
-        cout << " audience[" << index << "]: " << audience[index][0] << "\t," << audience[index][1] << endl ;
+        cout << " audience[" << index << "]:\t" << audience[index][0] << "\t," << audience[index][1] << endl ;
     }
+    
+    cout << "------------------------------------------------ " << endl;
+    cout << "i_index: " << i_index << endl;
+    cout << "j_index: " << j_index << endl;
     
     merge(audience, mergedarray, N, i_index , j_index);
     cout << "------------------------------------------------ " << endl;

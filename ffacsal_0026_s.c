@@ -51,14 +51,19 @@ void CheckSalssb0001(struct SALSSB0001* strSel01, int iCont)
 	strncpy(fecha_modificacion, strSel01[iCont].fec_modif, 10);
 	fecha_modificacion[10] = '\0';
 	exec sql  
-        select FEC_EVENTO, FEC_EVENTO+.99999
-		into fecha_salssb0001, fecha_CE_salssb0001		
+        select FEC_EVENTO, FEC_EVENTO+.99999 
+		into fecha_salssb0001, 	fecha_CE_salssb0001
         from salssb0001
 		WHERE NRO_SUMINISTRO = :numero_suministro
-        AND FEC_EVENTO  BETWEEN TO_DATE(:fecha_modificacion, 'YYYY-MM-DD HH:MI:SS') AND TO_DATE(:fecha_modificacion, 'YYYY-MM-DD HH:MI:SS')+.99999;
+        AND FEC_EVENTO  BETWEEN TO_DATE(:fecha_modificacion, 'DD-MM-YYYY')-.99999
+							AND TO_DATE(:fecha_modificacion, 'DD-MM-YYYY')+.99999;
     do_error("select Salssb0001");
-	
-	strcpy(strSel01[iCont].fec_modif, fecha_CE_salssb0001);
+
+	if(sqlca.sqlcode != 1403)
+	{
+		strcpy(strSel01[iCont].fec_modif, fecha_CE_salssb0001);
+		strcpy(strSel01[iCont].referencia, "ffacsal_0026");
+	}
 	
 	printf("recorr1[%s]", strSel01[iCont].fec_modif);
 }

@@ -42,6 +42,9 @@ class Triangle : public Shape{
         }
 };
 
+void function(Shape* s ){
+    s->area();    
+}
 
 int main(){
     
@@ -60,6 +63,11 @@ int main(){
     ptrsh = &tr;       //store Triangle
     ptrsh->area();     //execute Triangle->area()
 
+    std::cout << endl << "Or, it can be used in funtions that recieve pointer to the class" << endl;
+    
+    function(&sh1);
+    function(&re);
+    function(&tr);
 
     return 0;
 }

@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+/*This is a simple presentation of a non-trivial bug found on ffac.cpp*/
+
 int& highest(int  & i, int  & j)
 {
     if (i > j)

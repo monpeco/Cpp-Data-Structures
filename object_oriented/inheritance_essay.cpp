@@ -22,6 +22,16 @@ struct Teacher : public Person // equivalent struct Teacher : Person
     }    
 };
 
+struct Reseacher : private Person
+{
+    void foo()
+    {
+        id = 22;        //well formed, p1 is private in B
+        heigth = 180;   //well formed, p2 is private in B
+        //weigth = 85;  //ill formed, p3 is private in A
+    }
+};
+
 
 int main(){
     Person mike;
@@ -32,5 +42,11 @@ int main(){
     john.foo();
     cout << "Teacher.id: " << john.id << endl;
     //cout << "Teacher.heigth: " << john.heigth;  bad formed, because weight is protected and it cant be accessed from outside of the class Teacher
+
+    Reseacher yis;
+    yis.foo();
+    //cout << "Reseacher.id: " << yis.id;           bad formed, because all fields were inherit privately
+    //cout << "Reseacher.heigth: " << yis.heigth; 
+    //cout << "Reseacher.weigth: " << yis.weigth;
 
 }

@@ -48,11 +48,11 @@ struct Scientist : protected Person
     }
 };
 
-struct MadScientist : Scientist
+struct MadScientist : Scientist //This class 
 {
     void bar()
     {
-        cout << "MadScientist.bar()" << endl;
+        cout << "MadScientist.bar()" << " => id: "<< id << endl;
 
     }
 };

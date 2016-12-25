@@ -29,8 +29,10 @@ int main(){
                         
     ++it; 
     it == v.end();      // false, it points to the element at position 2 (with value 6)
-
+    std::cout << "it == v.end() = " << (it == v.end()) << std::endl;
+    
     ++it;
     it == v.end();      // true
-
+    std::cout << "it == v.end() = " << (it == v.end()) << std::endl;
+    
 }

@@ -1,4 +1,4 @@
-#include <stdio.h>      /* puts */
+#include <stdio.h>      /* printf */
 
 #define PI_PLUS_ONE_NOT_OK 3.14 + 1
 #define PI_PLUS_ONE (3.14 + 1)

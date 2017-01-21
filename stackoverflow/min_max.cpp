@@ -1,14 +1,15 @@
 #include <iostream>
-#define INT_MAX 0   // Error 1: INT_MAX must be defined
-#define INT_MIN 0   // Error 2: INT_MIN must be defined
+#include <climits>
+//#define INT_MAX 2000   // Error 1: INT_MAX must be defined
+//#define INT_MIN 0   // Error 2: INT_MIN must be defined
 
 using namespace std;
 int main()
 {
     int inNum, inInt, minInt, maxInt, i;
 
-    minInt = INT_MAX;
-    maxInt = INT_MIN;
+    minInt = INT_MAX; //2147483647
+    maxInt = INT_MIN; //-2147483648
     cout << "How many numbers would you like to enter?" << endl;
     cin >> inNum;
     cout << "Please enter " << inNum << " integers." << endl;
